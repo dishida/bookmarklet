@@ -46,3 +46,38 @@ javascript:(function(D,s,b,t,x){
 
 // One line
 javascript:(function(D,s,b,t,x){D.onmouseover=function(e){t=e.target||event.srcElement;x=t[s][b];t[s][b]='#ADA';t.tagName=='A'&&t.removeAttribute('href')};D.onclick=function(){t.parentNode.removeChild(t)};D.onmouseout=function(){t[s][b]=x}})(document,'style','backgroundColor')
+
+
+/*
+ * Change text on Double Click
+ */
+javascript:(function(D,t,T,H,d,x,h){
+	d=D.createElement('div');
+	d.style.cssText="position:fixed;left:10px;top:10px;z-index:9999;width:500px;height:200px;opacity:0.8; filter:alpha(opacity=80);";
+	x=D.createElement('textarea');
+	x.style.cssText='position:relative;left:10px;height:10px;width:480px;height:180px;background-color:#000;color:#FFF;';
+	d.appendChild(x);
+	D.onmouseover=function(e){
+		t=e.target||event.srcElement;
+		t.tagName='A'&&(h=t.href)&&t.removeAttribute('href')
+	};
+	D.onmouseout=function(){
+		t.href=h
+	};
+	D.ondblclick=function(e){
+		T=e.target||event.srcElement;
+		H=T.innerHTML;
+		D.body.appendChild(d);
+		x.value=H;
+		x.focus()
+	};
+	x.onkeydown=function(e){
+		if(e.keyCode==13){
+			T.innerHTML=x.value;
+			d.parentNode.removeChild(d)
+		}
+	}
+})(document)
+
+// One line
+javascript:(function(D,t,T,H,d,x,h){d=D.createElement('div');d.style.cssText="position:fixed;left:10px;top:10px;z-index:9999;width:500px;height:200px;opacity:0.8; filter:alpha(opacity=80);";x=D.createElement('textarea');x.style.cssText='position:relative;left:10px;height:10px;width:480px;height:180px;background-color:#000;color:#FFF;';d.appendChild(x);D.onmouseover=function(e){t=e.target||event.srcElement;t.tagName='A'&&(h=t.href)&&t.removeAttribute('href')};D.onmouseout=function(){t.href=h};D.ondblclick=function(e){T=e.target||event.srcElement;H=T.innerHTML;D.body.appendChild(d);x.value=H;x.focus()};x.onkeydown=function(e){if(e.keyCode==13){T.innerHTML=x.value;d.parentNode.removeChild(d)}}})(document)
