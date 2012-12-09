@@ -1,5 +1,5 @@
 /*
- * Check Password that was saved Browser
+ * Check Password that was saved in Text-Box
  */
 javascript:(function(i,D,d){
 	for(D=document.getElementsByTagName('input');d=D[i++];)
